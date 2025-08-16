@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChatMate — Google Sign-in</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">CM</div>
+      <span>ChatMate</span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="./index.html" class="btn btn--ghost">Back</a>
+      <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
+    </nav>
+  </header>
+
+  <main class="container center">
+    <section class="card" style="width:min(100%,480px)">
+      <h1 style="margin:0 0 8px 0;">Continue with Google</h1>
+      <p class="helper">This is a demo page. Implement OAuth flow here.</p>
+      <div class="stack" style="margin-top:12px;">
+        <a class="btn btn--primary btn--block" href="./feed.html">Simulate success → Go to Feed</a>
+        <a class="btn btn--block" href="./index.html">Cancel</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 ChatMate</footer>
+  <script>
+    (function(){
+      var STORAGE_KEY='theme'; var DEFAULT='dark'; var root=document.documentElement; var saved=null;
+      try{ saved=localStorage.getItem(STORAGE_KEY);}catch(e){}
+      var theme=(saved==='light'||saved==='dark')?saved:DEFAULT;
+      if(root.getAttribute('data-theme')!==theme) root.setAttribute('data-theme', theme);
+      function setLabel(){ var btn=document.getElementById('theme-toggle'); if(!btn) return; btn.textContent=(theme==='dark')?'☀️ Light':'🌙 Dark'; }
+      setLabel();
+      document.addEventListener('click', function(ev){ var t=ev.target; if(t&&t.id==='theme-toggle'){ theme=(theme==='dark')?'light':'dark'; root.setAttribute('data-theme', theme); try{localStorage.setItem(STORAGE_KEY, theme);}catch(e){} setLabel(); }});
+    })();
+  </script>
+</body>
+</html> 
