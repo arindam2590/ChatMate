@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <link rel="canonical" href="https://example.com/profile" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Social — Profile" />
+  <meta property="og:description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/profile" />
+  <meta property="og:image" content="https://example.com/og.png" />
+  <title>ChatMate — Sign in</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">S</div>
+      <span>ChatMate</span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="./feed.html" class="btn btn--ghost">Feed</a>
+      <a href="./profile.html" class="btn btn--ghost">Profile</a>
+      <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
+    </nav>
+  </header>
+
+  <main class="container center">
+    <section class="card" style="width:min(100%,420px)" aria-labelledby="authTitle">
+      <h1 id="authTitle" style="margin:0 0 8px 0;">Welcome back</h1>
+      <p class="helper" style="margin:0 0 16px 0;">Sign in to continue to your feed.</p>
+
+      <form class="stack" action="#" method="post" novalidate>
+        <div>
+          <label for="email" class="label">Email or Username</label>
+          <input id="email" name="email" class="input" type="text" autocomplete="username" required />
+          <p class="helper">We’ll never share your email.</p>
+        </div>
+
+        <div>
+          <label for="password" class="label">Password</label>
+          <input id="password" name="password" class="input" type="password" autocomplete="current-password" required />
+        </div>
+
+        <button class="btn btn--primary" type="submit" aria-disabled="true" title="Demo only">Sign in</button>
+        <button class="btn" type="button" title="Demo only">Continue with Google</button>
+      </form>
+
+      <hr class="hr" style="margin:16px 0" />
+      <p class="helper">No account? <a href="#" aria-disabled="true" title="Demo only">Create one</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 ChatMate</footer>
+  <script src="assets/js/theme.js" defer></script>
+</body>
+</html>

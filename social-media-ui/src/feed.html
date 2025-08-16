@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <link rel="canonical" href="https://example.com/profile" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Social — Profile" />
+  <meta property="og:description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/profile" />
+  <meta property="og:image" content="https://example.com/og.png" />
+  <title>ChatMate — Feed</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">S</div>
+      <span>ChatMate</span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="./index.html" class="btn btn--ghost">Sign in</a>
+      <a href="./profile.html" class="btn btn--ghost">Profile</a>
+      <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
+    </nav>
+  </header>
+
+  <main class="container grid grid--2" role="main">
+    <!-- Left column (sidebar / composer placeholder) -->
+    <aside class="stack">
+      <section class="card">
+        <h2 style="margin-top:0">Create a post</h2>
+        <label for="composer" class="label">What’s happening?</label>
+        <textarea id="composer" class="textarea" rows="3" placeholder="Share something…" aria-disabled="true"></textarea>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="btn" type="button" title="Demo only">Add Image</button>
+          <button class="btn btn--primary" type="button" title="Demo only">Post</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0;">Trends</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px;">
+          <li><a href="#" aria-disabled="true">#webdev</a></li>
+          <li><a href="#" aria-disabled="true">#javascript</a></li>
+          <li><a href="#" aria-disabled="true">#100DaysOfCode</a></li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- Right column (feed) -->
+    <section class="stack" aria-label="Timeline">
+      <!-- Post 1 -->
+      <article class="card post" aria-labelledby="p1-title">
+        <div class="avatar" aria-hidden="true">AG</div>
+        <div>
+          <div class="post__meta">
+            <span class="post__name" id="p1-title">Arindam Ghosh</span>
+            <time class="post__time" datetime="2025-08-16T09:00:00">2h</time>
+          </div>
+          <p>Minimal social UI is up! Next stop: auth & API.</p>
+          <div class="actions" role="group" aria-label="Post actions">
+            <button class="action" aria-pressed="false" title="Demo only">♥ Like · <span aria-hidden="true">12</span></button>
+            <button class="action" title="Demo only">💬 Comment · 3</button>
+            <button class="action" title="Demo only">↗ Share</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="card post" aria-labelledby="p2-title">
+        <div class="avatar" aria-hidden="true">JS</div>
+        <div>
+          <div class="post__meta">
+            <span class="post__name" id="p2-title">Jane Smith</span>
+            <time class="post__time" datetime="2025-08-15T21:30:00">12h</time>
+          </div>
+          <p>Trying grid layout for the feed. Thoughts?</p>
+          <figure class="post__image" style="margin:8px 0 0;">
+            <img src="https://picsum.photos/800/450?random=2" alt="Sample layout concept" />
+          </figure>
+          <div class="actions" role="group" aria-label="Post actions">
+            <button class="action" aria-pressed="true" title="Demo only">♥ Like · <span aria-hidden="true">98</span></button>
+            <button class="action" title="Demo only">💬 Comment · 14</button>
+            <button class="action" title="Demo only">↗ Share</button>
+          </div>
+        </div>
+      </article>
+
+      <button class="btn" type="button" title="Demo only">Load more</button>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 ChatMate</footer>
+  <script src="assets/js/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <link rel="canonical" href="https://example.com/profile" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Social — Profile" />
+  <meta property="og:description" content="Connect with friends, share posts, and explore trending topics on our fast, privacy-friendly social platform." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/profile" />
+  <meta property="og:image" content="https://example.com/og.png" />
+  <title>ChatMate — Profile</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="brand">
+      <div class="brand__logo" aria-hidden="true">S</div>
+      <span>ChatMate</span>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="./feed.html" class="btn btn--ghost">Feed</a>
+      <a href="./index.html" class="btn btn--ghost">Sign in</a>
+      <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
+    </nav>
+  </header>
+
+  <main role="main">
+    <div class="cover" aria-hidden="true"></div>
+
+    <section class="container">
+      <div class="profile-bar">
+        <div class="profile-pic" aria-hidden="true">AG</div>
+        <div class="meta">
+          <h1 style="margin:0;">Arindam Ghosh</h1>
+          <div class="counts" aria-label="Follower counts">
+            <span><strong>152</strong> Following</span>
+            <span><strong>1,202</strong> Followers</span>
+          </div>
+        </div>
+        <div style="margin-left:auto;">
+          <button class="btn" type="button" title="Demo only">Edit profile</button>
+          <button class="btn btn--primary" type="button" title="Demo only">Follow</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:-24px;">
+        <p class="helper" style="margin:0;">Bio</p>
+        <p>PhD student. Building multi-agent SAR simulations & full-stack projects.</p>
+      </div>
+
+      <div class="container" style="padding-inline:0; margin-top:16px;">
+        <nav class="nav" aria-label="Profile tabs">
+          <a href="#" class="btn btn--primary" aria-current="page" title="Demo only">All</a>
+          <a href="#" class="btn" title="Demo only">Media</a>
+          <a href="#" class="btn" title="Demo only">Likes</a>
+        </nav>
+      </div>
+
+      <section class="grid" style="margin-top:16px;">
+        <!-- Simple list of user's posts -->
+        <article class="card post" aria-labelledby="up1">
+          <div class="avatar" aria-hidden="true">AG</div>
+          <div>
+            <div class="post__meta">
+              <span class="post__name" id="up1">Arindam Ghosh</span>
+              <time class="post__time" datetime="2025-08-14">2d</time>
+            </div>
+            <p>First commit to the Social UI repo 🚀</p>
+            <div class="actions" role="group" aria-label="Post actions">
+              <button class="action" aria-pressed="false" title="Demo only">♥ Like · 5</button>
+              <button class="action" title="Demo only">💬 Comment · 1</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card post" aria-labelledby="up2">
+          <div class="avatar" aria-hidden="true">AG</div>
+          <div>
+            <div class="post__meta">
+              <span class="post__name" id="up2">Arindam Ghosh</span>
+              <time class="post__time" datetime="2025-08-10">6d</time>
+            </div>
+            <p>Sketching the database schema next.</p>
+            <div class="actions" role="group" aria-label="Post actions">
+              <button class="action" aria-pressed="true" title="Demo only">♥ Like · 18</button>
+              <button class="action" title="Demo only">💬 Comment · 3</button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 ChatMate</footer>
+  <script src="assets/js/theme.js" defer></script>
+</body>
+</html>
