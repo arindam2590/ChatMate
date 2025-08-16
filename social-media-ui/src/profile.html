@@ -74,8 +74,21 @@
             <p>First commit to the Social UI repo 🚀</p>
             <div class="actions" role="group" aria-label="Post actions">
               <button class="action" aria-pressed="false" title="Demo only">♥ Like · 5</button>
-              <button class="action" title="Demo only">💬 Comment · 1</button>
+              <button class="action" data-toggle="comments" title="Show comments">💬 Comments · 1</button>
             </div>
+            <section class="card" data-comments hidden>
+              <div class="post" style="margin-top:8px;">
+                <div class="avatar" aria-hidden="true">JS</div>
+                <div>
+                  <div class="post__meta"><span class="post__name">Jane Smith</span> <time class="post__time">1d</time></div>
+                  <p>Nice! Congrats on the first commit.</p>
+                  <div class="actions" role="group" aria-label="Comment actions">
+                    <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                    <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </article>
 
@@ -89,8 +102,32 @@
             <p>Sketching the database schema next.</p>
             <div class="actions" role="group" aria-label="Post actions">
               <button class="action" aria-pressed="true" title="Demo only">♥ Like · 18</button>
-              <button class="action" title="Demo only">💬 Comment · 3</button>
+              <button class="action" data-toggle="comments" title="Show comments">💬 Comments · 3</button>
             </div>
+            <section class="card" data-comments hidden>
+              <div class="post" style="margin-top:8px;">
+                <div class="avatar" aria-hidden="true">AG</div>
+                <div>
+                  <div class="post__meta"><span class="post__name">Arindam</span> <time class="post__time">5d</time></div>
+                  <p>Schema draft looks promising.</p>
+                  <div class="actions" role="group" aria-label="Comment actions">
+                    <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                    <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                  </div>
+                </div>
+              </div>
+              <div class="post" style="margin-top:8px;">
+                <div class="avatar" aria-hidden="true">JS</div>
+                <div>
+                  <div class="post__meta"><span class="post__name">Jane</span> <time class="post__time">4d</time></div>
+                  <p>Can’t wait to see the ERD!</p>
+                  <div class="actions" role="group" aria-label="Comment actions">
+                    <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                    <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </article>
       </section>
@@ -171,6 +208,18 @@
           follow.textContent = next ? 'Following' : 'Follow';
         });
       })();
+
+      // Show/hide comments
+      document.addEventListener('click', function(ev){
+        var toggle = ev.target && ev.target.closest && ev.target.closest('[data-toggle="comments"]');
+        if (!toggle) return;
+        ev.preventDefault();
+        var container = toggle.closest('article.post') || toggle.closest('.card.post') || toggle.closest('.post');
+        if (!container) return;
+        var block = container.querySelector('[data-comments]');
+        if (!block) return;
+        if (block.hasAttribute('hidden')) block.removeAttribute('hidden'); else block.setAttribute('hidden','');
+      });
 
       // Like interactions
       document.addEventListener('click', function (ev) {

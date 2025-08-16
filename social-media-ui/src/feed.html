@@ -31,16 +31,6 @@
     <!-- Left column (sidebar / composer placeholder) -->
     <aside class="stack">
       <section class="card">
-        <h2 style="margin-top:0">Create a post</h2>
-        <label for="composer" class="label">What’s happening?</label>
-        <textarea id="composer" class="textarea" rows="3" placeholder="Share something…" aria-disabled="true"></textarea>
-        <div style="display:flex; gap:8px; margin-top:8px;">
-          <button class="btn" type="button" title="Demo only">Add Image</button>
-          <button class="btn btn--primary" type="button" title="Demo only">Post</button>
-        </div>
-      </section>
-
-      <section class="card">
         <h3 style="margin-top:0;">Trends</h3>
         <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px;">
           <li><a href="#" aria-disabled="true">#webdev</a></li>
@@ -52,6 +42,15 @@
 
     <!-- Right column (feed) -->
     <section class="stack" aria-label="Timeline">
+      <section class="card">
+        <h2 style="margin-top:0">Create a post</h2>
+        <label for="composer" class="label">What’s happening?</label>
+        <textarea id="composer" class="textarea" rows="3" placeholder="Share something…" aria-disabled="true"></textarea>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="btn" type="button" title="Demo only">Add Image</button>
+          <button class="btn btn--primary" type="button" title="Demo only">Post</button>
+        </div>
+      </section>
       <!-- Post 1 -->
       <article class="card post" aria-labelledby="p1-title">
         <div class="avatar" aria-hidden="true">AG</div>
@@ -63,9 +62,33 @@
           <p>Minimal social UI is up! Next stop: auth & API.</p>
           <div class="actions" role="group" aria-label="Post actions">
             <button class="action" aria-pressed="false" title="Demo only">♥ Like · <span aria-hidden="true">12</span></button>
-            <button class="action" title="Demo only">💬 Comment · 3</button>
+            <button class="action" data-toggle="comments" title="Show comments">💬 Comments · 3</button>
             <button class="action" title="Demo only">↗ Share</button>
           </div>
+          <section class="card" data-comments hidden>
+            <div class="post" style="margin-top:8px;">
+              <div class="avatar" aria-hidden="true">JS</div>
+              <div>
+                <div class="post__meta"><span class="post__name">Jane Smith</span> <time class="post__time">1h</time></div>
+                <p>Congrats! Looking forward to the API.</p>
+                <div class="actions" role="group" aria-label="Comment actions">
+                  <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                  <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                </div>
+              </div>
+            </div>
+            <div class="post" style="margin-top:8px;">
+              <div class="avatar" aria-hidden="true">AG</div>
+              <div>
+                <div class="post__meta"><span class="post__name">Arindam</span> <time class="post__time">30m</time></div>
+                <p>Thanks! Shipping soon.</p>
+                <div class="actions" role="group" aria-label="Comment actions">
+                  <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                  <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </article>
 
@@ -83,9 +106,22 @@
           </figure>
           <div class="actions" role="group" aria-label="Post actions">
             <button class="action" aria-pressed="true" title="Demo only">♥ Like · <span aria-hidden="true">98</span></button>
-            <button class="action" title="Demo only">💬 Comment · 14</button>
+            <button class="action" data-toggle="comments" title="Show comments">💬 Comments · 14</button>
             <button class="action" title="Demo only">↗ Share</button>
           </div>
+          <section class="card" data-comments hidden>
+            <div class="post" style="margin-top:8px;">
+              <div class="avatar" aria-hidden="true">AG</div>
+              <div>
+                <div class="post__meta"><span class="post__name">Arindam</span> <time class="post__time">8h</time></div>
+                <p>Looks clean! Maybe tighten gaps on mobile.</p>
+                <div class="actions" role="group" aria-label="Comment actions">
+                  <button class="action" aria-pressed="false">♥ Like · <span aria-hidden="true">0</span></button>
+                  <button class="action" data-toggle="reply" title="Demo only">↩ Reply</button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </article>
 
@@ -94,7 +130,51 @@
   </main>
 
   <footer class="footer">© 2025 ChatMate</footer>
-  <script src="js/theme.js" defer></script>
-  <script src="js/interactions.js" defer></script>
+  <script>
+    (function(){
+      // Theme toggle
+      var STORAGE_KEY='theme'; var DEFAULT='dark'; var root=document.documentElement; var saved=null;
+      try{ saved=localStorage.getItem(STORAGE_KEY);}catch(e){}
+      var theme=(saved==='light'||saved==='dark')?saved:DEFAULT;
+      if(root.getAttribute('data-theme')!==theme) root.setAttribute('data-theme', theme);
+      function setLabel(){ var btn=document.getElementById('theme-toggle'); if(!btn) return; btn.textContent=(theme==='dark')?'☀️ Light':'🌙 Dark'; }
+      setLabel();
+      document.addEventListener('click', function(ev){ var t=ev.target; if(t&&t.id==='theme-toggle'){ theme=(theme==='dark')?'light':'dark'; root.setAttribute('data-theme', theme); try{localStorage.setItem(STORAGE_KEY, theme);}catch(e){} setLabel(); }});
+
+      // Like interactions
+      document.addEventListener('click', function (ev) {
+        var btn = ev.target && ev.target.closest && ev.target.closest('button.action[aria-pressed]');
+        if (!btn) return;
+        ev.preventDefault();
+        var isPressed = btn.getAttribute('aria-pressed') === 'true';
+        var countSpan = btn.querySelector('span');
+        var current = 0;
+        if (countSpan) {
+          var n = parseInt((countSpan.textContent || '').trim(), 10);
+          current = isNaN(n) ? 0 : n;
+        } else {
+          var m = (btn.textContent || '').match(/(\d+)(?!.*\d)/);
+          current = m ? parseInt(m[1], 10) : 0;
+        }
+        var nextPressed = !isPressed;
+        var next = nextPressed ? current + 1 : Math.max(0, current - 1);
+        btn.setAttribute('aria-pressed', String(nextPressed));
+        if (countSpan) { countSpan.textContent = String(next); }
+        else { btn.textContent = (btn.textContent || '').replace(/(\d+)(?!.*\d)/, String(next)); }
+      });
+
+      // Show/hide comments
+      document.addEventListener('click', function(ev){
+        var toggle = ev.target && ev.target.closest && ev.target.closest('[data-toggle="comments"]');
+        if (!toggle) return;
+        ev.preventDefault();
+        var container = toggle.closest('article.post') || toggle.closest('.card.post') || toggle.closest('.post');
+        if (!container) return;
+        var block = container.querySelector('[data-comments]');
+        if (!block) return;
+        if (block.hasAttribute('hidden')) block.removeAttribute('hidden'); else block.setAttribute('hidden','');
+      });
+    })();
+  </script>
 </body>
 </html>

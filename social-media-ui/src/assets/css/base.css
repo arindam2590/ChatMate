@@ -91,6 +91,14 @@ body {
 }
 .action[aria-pressed="true"] { background: color-mix(in srgb, var(--accent), transparent 80%); }
 
+/* Comments block styling */
+[data-comments] { margin-top: 10px; }
+[data-comments] .post { grid-template-columns: 36px 1fr; }
+[data-comments] .avatar { width: 36px; height: 36px; }
+[data-comments] .actions { margin-top: 6px; }
+
+
+
 /* Enhance interactive states for actions */
 .action { transition: transform 120ms ease, background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease; will-change: transform; }
 .action:hover { transform: translateY(-1px) scale(1.02); background: color-mix(in srgb, var(--surface), white 6%); }
