@@ -1,4 +1,4 @@
-#ChatMate
+# ChatMate
 
 A full stack social media application built step-by-step as a learning project for mastering frontend, backend, databases, and deployment.
 
