@@ -6,15 +6,15 @@ The project starts with static UI and gradually evolves into a real-world full-s
 
 # Table of Contents
 
-About
-Tech Stack
-Features
-Architecture
-Project Structure
-Setup & Installation
-Development Workflow
-Testing & Validation
-Deployment
-Roadmap
-Contributing
-License
+- About
+- Tech Stack
+- Features
+- Architecture
+- Project Structure
+- Setup & Installation
+- Development Workflow
+- Testing & Validation
+- Deployment
+- Roadmap
+- Contributing
+- License
