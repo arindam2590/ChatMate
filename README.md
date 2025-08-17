@@ -18,3 +18,15 @@ The project starts with static UI and gradually evolves into a real-world full-s
 - [Roadmap](#Roadmap)
 - [Contributing](#Contributing)
 - [License](#License)
+
+# About
+
+This project is designed as a learning roadmap for Full Stack Web Development.
+It simulates a social media platform (like Twitter/Facebook-lite) and covers every layer of the stack:
+
+- Frontend → HTML, CSS, JavaScript, React
+- Backend → Node.js, Express
+- Database → MongoDB / PostgreSQL
+- Deployment → GitHub Pages, Netlify, Render, Vercel, MongoDB Atlas
+
+The goal is to gain practical, end-to-end experience by building a feature-rich app incrementally.
