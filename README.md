@@ -6,7 +6,7 @@ The project starts with static UI and gradually evolves into a real-world full-s
 
 # Table of Contents
 
-- About
+- [About](#About)
 - Tech Stack
 - Features
 - Architecture
