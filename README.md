@@ -30,3 +30,34 @@ It simulates a social media platform (like Twitter/Facebook-lite) and covers eve
 - Deployment → GitHub Pages, Netlify, Render, Vercel, MongoDB Atlas
 
 The goal is to gain practical, end-to-end experience by building a feature-rich app incrementally.
+
+# Tech Stack
+Frontend
+
+- HTML5, CSS3, Vanilla JS (Phase-1 basics)
+- React.js with React Router, Context API/Redux (Phase-2+)
+- Tailwind CSS for responsive styling
+- Axios / Fetch API for backend communication
+
+Backend
+
+- Node.js + Express.js
+- JWT Authentication + bcrypt for security
+- Multer / Cloudinary for image uploads
+
+Database
+
+- MongoDB + Mongoose ODM (primary choice)
+- Optionally: PostgreSQL with Sequelize/Prisma ORM
+
+Real-time
+
+- Socket.io for chat and notifications
+
+DevOps / Deployment
+
+- Git + GitHub for version control
+- Netlify / Vercel → Frontend hosting
+- Render / Railway / Heroku → Backend hosting
+- MongoDB Atlas / ElephantSQL → Cloud database
+- GitHub Actions → CI/CD (tests + linting)
