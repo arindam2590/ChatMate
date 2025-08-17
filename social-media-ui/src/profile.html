@@ -20,12 +20,89 @@
       <div class="brand__logo" aria-hidden="true">S</div>
       <span>ChatMate</span>
     </div>
+    <div style="flex:1; max-width:520px; margin:0 12px;">
+      <input class="input" type="search" placeholder="Search" aria-label="Search" style="width:100%;" />
+    </div>
     <nav class="nav" aria-label="Primary">
       <a href="./feed.html" class="btn btn--ghost">Feed</a>
-      <a href="./index.html" class="btn btn--ghost">Sign in</a>
       <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
+      <button class="btn btn--ghost" type="button" id="settings-toggle" aria-expanded="false" aria-controls="settings-panel" aria-label="Open settings">⚙️</button>
     </nav>
   </header>
+
+  <section id="settings-panel" class="container" hidden>
+    <div class="card" style="max-width:720px; margin:12px auto;">
+      <h2 style="margin:0 0 8px 0;">Settings</h2>
+      <div class="grid" style="grid-template-columns: 220px 1fr; align-items:start;">
+        <nav class="stack" aria-label="Settings sections">
+          <a href="#" class="btn btn--primary" data-settings-tab="account" aria-current="page">Account</a>
+          <a href="#" class="btn" data-settings-tab="privacy">Privacy & Security</a>
+          <a href="#" class="btn" data-settings-tab="friends">Friend / Follower List</a>
+          <a href="#" class="btn" data-settings-tab="clusters">Follower Clusters</a>
+          <a href="#" class="btn" data-settings-tab="logout">Log out</a>
+        </nav>
+        <div>
+          <section id="settings-account" class="stack">
+            <p class="helper" style="margin:0;">Manage your profile, email and password.</p>
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+              <div>
+                <label class="label" for="set-name">Display name</label>
+                <input class="input" id="set-name" type="text" value="Arindam Ghosh" />
+              </div>
+              <div>
+                <label class="label" for="set-email">Email</label>
+                <input class="input" id="set-email" type="email" value="arindam@example.com" />
+              </div>
+              <div>
+                <label class="label" for="set-pass">Password</label>
+                <input class="input" id="set-pass" type="password" placeholder="••••••••" />
+              </div>
+            </div>
+            <div>
+              <button class="btn btn--primary" type="button" aria-disabled="true" title="Demo only">Save</button>
+            </div>
+          </section>
+
+          <section id="settings-privacy" class="stack" hidden>
+            <p class="helper" style="margin:0;">Control who can see your content, mentions and DMs.</p>
+            <label class="label" for="set-private">Private account</label>
+            <select class="select" id="set-private">
+              <option>Off</option>
+              <option>On</option>
+            </select>
+            <label class="label" for="set-mentions">Who can mention you?</label>
+            <select class="select" id="set-mentions">
+              <option>Everyone</option>
+              <option>People you follow</option>
+              <option>No one</option>
+            </select>
+          </section>
+
+          <section id="settings-friends" class="stack" hidden>
+            <p class="helper" style="margin:0;">Your connections.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px;">
+              <li class="card">@jane · Following</li>
+              <li class="card">@rahul · Follower</li>
+            </ul>
+          </section>
+
+          <section id="settings-clusters" class="stack" hidden>
+            <p class="helper" style="margin:0;">Follower clusters (demo).</p>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+              <div class="card">Peers</div>
+              <div class="card">Students</div>
+              <div class="card">Collaborators</div>
+            </div>
+          </section>
+
+          <section id="settings-logout" class="stack" hidden>
+            <p>Ready to leave?</p>
+            <a class="btn btn--primary" href="./index.html">Log out</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <main role="main">
     <div class="cover" aria-hidden="true"></div>
@@ -176,6 +253,37 @@
       function setLabel(){ var btn=document.getElementById('theme-toggle'); if(!btn) return; btn.textContent=(theme==='dark')?'☀️ Light':'🌙 Dark'; }
       setLabel();
       document.addEventListener('click', function(ev){ var t=ev.target; if(t&&t.id==='theme-toggle'){ theme=(theme==='dark')?'light':'dark'; root.setAttribute('data-theme', theme); try{localStorage.setItem(STORAGE_KEY, theme);}catch(e){} setLabel(); }});
+
+      // Settings gear toggle
+      (function(){
+        var toggle = document.getElementById('settings-toggle');
+        var panel = document.getElementById('settings-panel');
+        if (!toggle || !panel) return;
+        toggle.addEventListener('click', function(){
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+          var next = !expanded;
+          toggle.setAttribute('aria-expanded', String(next));
+          if (next) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','');
+        });
+        // Settings tabs
+        var nav = panel.querySelector('[aria-label="Settings sections"]');
+        if (nav) {
+          nav.addEventListener('click', function(e){
+            var link = e.target.closest('a[data-settings-tab]');
+            if (!link) return;
+            e.preventDefault();
+            var tab = link.getAttribute('data-settings-tab');
+            panel.querySelectorAll('[data-settings-tab]').forEach(function(a){ a.classList.remove('btn--primary'); a.removeAttribute('aria-current'); });
+            link.classList.add('btn--primary');
+            link.setAttribute('aria-current','page');
+            ['account','privacy','friends','clusters','logout'].forEach(function(name){
+              var el = document.getElementById('settings-' + name);
+              if (!el) return;
+              if (name === tab) { el.removeAttribute('hidden'); } else { el.setAttribute('hidden',''); }
+            });
+          });
+        }
+      })();
 
       // Tabs
       var nav = document.querySelector('[aria-label="Profile tabs"]');

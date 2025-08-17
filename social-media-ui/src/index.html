@@ -20,9 +20,10 @@
       <div class="brand__logo" aria-hidden="true">S</div>
       <span>ChatMate</span>
     </div>
+    <div style="flex:1; max-width:520px; margin:0 12px;">
+      <input class="input" type="search" placeholder="Search" aria-label="Search" style="width:100%;" />
+    </div>
     <nav class="nav" aria-label="Primary">
-      <a href="./feed.html" class="btn btn--ghost">Feed</a>
-      <a href="./profile.html" class="btn btn--ghost">Profile</a>
       <button class="btn" type="button" id="theme-toggle" aria-label="Toggle theme">🌙 Dark</button>
     </nav>
   </header>
@@ -54,6 +55,16 @@
   </main>
 
   <footer class="footer">© 2025 ChatMate</footer>
-  <script src="js/theme.js" defer></script>
+  <script>
+    (function(){
+      var STORAGE_KEY='theme'; var DEFAULT='dark'; var root=document.documentElement; var saved=null;
+      try{ saved=localStorage.getItem(STORAGE_KEY);}catch(e){}
+      var theme=(saved==='light'||saved==='dark')?saved:DEFAULT;
+      if(root.getAttribute('data-theme')!==theme) root.setAttribute('data-theme', theme);
+      function setLabel(){ var btn=document.getElementById('theme-toggle'); if(!btn) return; btn.textContent=(theme==='dark')?'☀️ Light':'🌙 Dark'; }
+      setLabel();
+      document.addEventListener('click', function(ev){ var t=ev.target; if(t&&t.id==='theme-toggle'){ theme=(theme==='dark')?'light':'dark'; root.setAttribute('data-theme', theme); try{localStorage.setItem(STORAGE_KEY, theme);}catch(e){} setLabel(); }});
+    })();
+  </script>
 </body>
 </html>

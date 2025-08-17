@@ -137,6 +137,12 @@ body {
 .hr { height: 1px; background: var(--border); border: 0; }
 .footer { color: var(--muted); text-align: center; padding: 24px 12px; font-size: 14px; }
 
+/* Settings panel tweaks */
+#settings-panel [aria-label="Settings sections"] > .btn { justify-content: flex-start; }
+#settings-panel .grid { gap: 16px; }
+#settings-panel [aria-label="Settings sections"] a.btn:hover { background: var(--accent); border-color: transparent; color: #fff; }
+
+
 /* ========== Theme (attribute overrides) ========== */
 html[data-theme="dark"] {
   --bg: #0b0f13; --surface: #121821; --muted: #9ca3af; --text: #e5e7eb;
