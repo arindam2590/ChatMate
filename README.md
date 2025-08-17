@@ -7,14 +7,14 @@ The project starts with static UI and gradually evolves into a real-world full-s
 # Table of Contents
 
 - [About](#About)
-- Tech Stack
-- Features
-- Architecture
-- Project Structure
-- Setup & Installation
-- Development Workflow
-- Testing & Validation
-- Deployment
-- Roadmap
-- Contributing
-- License
+- [Tech Stack](#TechStack)
+- [Features](#Features)
+- [Architecture](#Architecture)
+- [Project Structure](#ProjectStructure)
+- [Setup & Installation](#Setup&Installation)
+- [Development Workflow](#DevelopmentWorkflow)
+- [Testing & Validation](#Testing&Validation)
+- [Deployment](#Deployment)
+- [Roadmap](#Roadmap)
+- [Contributing](#Contributing)
+- [License](#License)
